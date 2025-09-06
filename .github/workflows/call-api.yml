@@ -1,0 +1,16 @@
+name: Call Foodics API
+
+on:
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make API Request
+        run: |
+          echo "Calling Foodics API..."
+          curl -X GET "${{ secrets.API_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.API_TOKEN }}" \
+            -H "Content-Type: application/json"
